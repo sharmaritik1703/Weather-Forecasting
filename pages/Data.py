@@ -1,13 +1,9 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import pickle
 
 st.set_page_config(page_icon="⚙️")
-
 st.title("Feature Selection")
-
-model = pickle.load(open('weather.pkl', 'rb'))
 directions = {'E': 0, 'W': 1, 'N': 2, 'S': 3, 'NE': 4, 'SE': 5, 'NW': 6, 'SW': 7}
 
 if 'data' not in st.session_state:
