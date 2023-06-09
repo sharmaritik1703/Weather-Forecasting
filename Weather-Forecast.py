@@ -6,5 +6,6 @@ st.markdown("A machine learning algorithm to predict the weather status using en
 
 st.subheader("Accepted Parameters")
 df = pd.read_csv("weather_test.csv")
+df.drop("Unnamed: 0", axis=1, inplace=True)
 
-st.dataframe(df.columns)
+st.table(data=df.columns)
