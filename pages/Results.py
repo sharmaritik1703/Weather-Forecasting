@@ -1,4 +1,4 @@
-from Weather import model
+from Data import model
 import streamlit as st
 import pandas as pd
 from PIL import Image
