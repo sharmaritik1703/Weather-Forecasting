@@ -3,7 +3,7 @@ import pandas as pd
 
 st.title("Weather Forecasting")
 st.markdown("""
-$\\textrm{A machine learning algorithm to predict the weather status using entered parameters}$.
+A machine learning algorithm to predict the weather status using entered parameters.
 
 - $\\textrm{Go to top left corner}$.
 - $\\textrm{Enter the value of features in Data page}$.
