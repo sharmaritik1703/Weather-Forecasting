@@ -18,16 +18,17 @@ st.subheader("Input")
 df = st.data_editor(data=df)
 
 def predict():
-    outputs = {0: "Sunny", 1: "Cloudy", 2: "Rainy"}
     value = model.predict(df)
-    weather = outputs[value[0]]
-
+    
     if value[0] == 0:
         image = image1
+        weather = "Sunny"
     elif value[0] == 1:
         image = image2
+        weather = "Cloudy"
     else:
         image = image3
+        weather = "Rainy"
 
     st.image(image=image)
     st.subheader(f"{weather} day")
