@@ -9,4 +9,4 @@ df.drop(["Unnamed: 0", "date"], axis=1, inplace=True)
 
 st.subheader("Features")
 with st.expander(label="👇👇 "):
-  st.dataframe(data=df.columns, width=300, height=450)
+  st.dataframe(data=df.columns, width=250, height=380)
