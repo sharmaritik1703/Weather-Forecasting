@@ -3,10 +3,11 @@ import pandas as pd
 
 st.title("Weather Forecasting")
 st.markdown("""
-A machine learning algorithm to predict the weather status using entered parameters.
+\textrm{A machine learning algorithm to predict the weather status using entered parameters.}
 
-- Enter the value of features in **Data** page.
-- See the weather status in **Results** page.
+- \textrm{Go to top left corner}.
+- \textrm{Enter the value of features in **Data** page}.
+- \textrm{See the weather status in **Results** page}.
 """)
 
 df = pd.read_csv("weather_test.csv")
