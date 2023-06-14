@@ -24,7 +24,7 @@ with col3:
     st.session_state.data[0, 2] = st.slider(label="Min. Temperature", min_value=-7.0, max_value=24.0)
 
 with col4:
-    st.session_state.data[0, 3] = st.slider(label="Precipitation", min_value=0.0, max_value=35.5)
+    st.session_state.data[0, 3] = st.slider(label="Precipitation", min_value=0.0, max_value=43.0)
 
 with col5:
     st.session_state.data[0, 4] = st.slider(label="Avg. Wind Speed", min_value=1.0, max_value=5.2)
