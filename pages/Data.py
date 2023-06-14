@@ -18,10 +18,10 @@ with col1:
     st.session_state.data[0, 0] = st.slider(label="Average Temperature", min_value=-3.7, max_value=30.0)
 
 with col2:
-    st.session_state.data[0, 1] = st.slider(label="Min. Temperature", min_value=-7.0, max_value=24.0)
+    st.session_state.data[0, 2] = st.slider(label="Max. Temperature", min_value=0.0, max_value=37.3)
 
 with col3:
-    st.session_state.data[0, 2] = st.slider(label="Max. Temperature", min_value=0.0, max_value=37.3)
+    st.session_state.data[0, 1] = st.slider(label="Min. Temperature", min_value=-7.0, max_value=24.0)
 
 with col4:
     st.session_state.data[0, 3] = st.slider(label="Precipitation", min_value=0.0, max_value=26.0)
