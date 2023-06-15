@@ -3,7 +3,7 @@ import pandas as pd
 from PIL import Image
 import pickle
 
-model = pickle.load(open('weather.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 image1 = Image.open("sunny.jpg")
 image2 = Image.open("cloudy.jpg")
