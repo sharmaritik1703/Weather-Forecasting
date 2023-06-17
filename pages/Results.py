@@ -18,6 +18,6 @@ def predict():
     rain_status = {0: "No Rain", 1: "Low Rain", 2: "High Rain"}
     value = model.predict(df)[0]
     weather = rain_status[value]
-    st.subheader(label=weather)
+    st.subheader(weather)
 
 st.button(label="Forecast", on_click=predict)
