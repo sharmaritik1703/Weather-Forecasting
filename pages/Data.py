@@ -45,7 +45,7 @@ with col9:
     st.session_state.data[0, 8] = directions[msd]
 
 with col10:
-    st.session_state.data[0, 9] = st.slider(label="Min. Atmospheric Pressure", min_value=1009.00, max_value=1022.00)
+    st.session_state.data[0, 9] = st.slider(label="Min. Atmospheric Pressure", min_value=1009.00, max_value=1029.00)
 
 main = pd.read_csv("weather_test.csv")
 df = pd.DataFrame(data=st.session_state.data, columns=main.columns[2:])
