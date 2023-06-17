@@ -16,8 +16,8 @@ df = st.data_editor(data=df)
 
 def predict():
     rain_status = {0: "No Rain", 1: "Low Rain", 2: "High Rain"}
-    value = model.predict(df)
-    weather = rain_status(value[0])
+    value = model.predict(df)[0]
+    weather = rain_status(value)
     st.subheader(f"{weather} day")
 
 st.button(label="Forecast", on_click=predict)
