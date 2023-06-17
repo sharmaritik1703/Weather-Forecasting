@@ -5,10 +5,6 @@ import pickle
 
 model = pickle.load(open('model.pkl', 'rb'))
 
-image1 = Image.open("sunny.jpg")
-image2 = Image.open("cloudy.jpg")
-image3 = Image.open("rainy.jpg")
-
 df = pd.read_csv("user-data.csv")
 df.drop('Unnamed: 0', axis=1, inplace=True)
 
@@ -19,20 +15,9 @@ st.subheader("Input")
 df = st.data_editor(data=df)
 
 def predict():
+    rain_status = {0: "No Rain", 1: "Low Rain", 2: "High Rain"}
     value = model.predict(df)
-    
-    if value[0] == 0:
-        image = image1
-        weather = "Sunny"
-    elif value[0] == 1:
-        image = image2
-        weather = "Cloudy"
-    else:
-        image = image3
-        weather = "Rainy"
-
-    st.image(image=image)
+    weather = rain_status(value[0])
     st.subheader(f"{weather} day")
-
 
 st.button(label="Forecast", on_click=predict)
