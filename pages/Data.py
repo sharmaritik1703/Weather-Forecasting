@@ -1,56 +1,61 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
+import numpy as np
+import pickle
 
-st.set_page_config(page_icon="⚙️")
+model = pickle.load(open("Model.h5", 'rb'))
 
-st.title("Data Input")
-directions = {'E': 0, 'W': 1, 'N': 2, 'S': 3, 'NE': 4, 'SE': 5, 'NW': 6, 'SW': 7}
+st.title("Weather Forecasting System")
+st.subheader("It predicts the next day weather based upon current day data.")
 
-if 'data' not in st.session_state:
-    st.session_state.data = np.zeros(shape=(1, 10))
+if 'app_data' not in st.session_state:
+    st.session_state.app_data = np.zeros(shape=(1, 7))
+
+status = {
+ 'Partly Cloudy': 0,'Mostly Cloudy': 1,'Overcast': 2, 'Clear': 3,'Foggy': 4,
+ 'Breezy and Overcast': 5, 'Breezy and Mostly Cloudy': 6, 'Breezy and Partly Cloudy': 7,
+ 'Dry and Partly Cloudy': 8, 'Windy and Partly Cloudy': 9, 'Light Rain': 10,
+ 'Breezy': 11, 'Windy and Overcast': 12, 'Humid and Mostly Cloudy': 13, 'Drizzle': 14,
+ 'Breezy and Foggy': 15, 'Windy and Mostly Cloudy': 16, 'Dry': 17, 'Humid and Partly Cloudy': 18,
+ 'Dry and Mostly Cloudy': 19, 'Rain': 20, 'Windy': 21, 'Humid and Overcast': 22, 'Windy and Foggy': 23,
+ 'Windy and Dry': 24, 'Dangerously Windy and Partly Cloudy': 25,'Breezy and Dry': 26
+}
+
+precipitation = {'rain': 0, 'snow': 1}
 
 col1, col2, col3 = st.columns(3)
 col4, col5, col6 = st.columns(3)
-col7, col8 = st.columns(2)
-col9, col10 = st.columns(2)
+
 
 with col1:
-    st.session_state.data[0, 0] = st.slider(label="Average Temperature", min_value=-8.00, max_value=29.5)
+    st.session_state.app_data[0, 0] = precipitation[st.selectbox(label='Precipitation Type', options=precipitation.keys())]
 
 with col2:
-    st.session_state.data[0, 1] = st.slider(label="Max. Temperature", min_value=0.50, max_value=40.00)
+    st.session_state.app_data[0, 1] = st.slider(label='Temperature (C)', min_value=-10.0, max_value=40.0)
 
 with col3:
-    st.session_state.data[0, 2] = st.slider(label="Min. Temperature", min_value=-13.00, max_value=24.50)
+    st.session_state.app_data[0, 2] = st.slider(label='Humidity', min_value=0.0, max_value=1.0)
 
 with col4:
-    st.session_state.data[0, 3] = st.slider(label="Precipitation", min_value=0.00, max_value=84.00)
+    st.session_state.app_data[0, 3] = st.slider(label='Wind Speed (kmph)', min_value=0.0, max_value=30.0)
 
 with col5:
-    st.session_state.data[0, 4] = st.slider(label="Avg. Wind Speed", min_value=0.30, max_value=5.0)
+    st.session_state.app_data[0, 4] = st.slider(label='Wind Bearing (degrees)', min_value=0, max_value=400)
 
 with col6:
-    st.session_state.data[0, 5] = st.slider(label="Max. Wind Speed", min_value=1.00, max_value=11.00)
+    st.session_state.app_data[0, 5] = st.slider(label='Visibility (km)', min_value=0, max_value=16)
 
-with col7:
-    wsd = st.selectbox(label="Max. Wind Speed Direction", options=directions.keys())
-    st.session_state.data[0, 6] = directions[wsd]
+st.session_state.app_data[0, 6] = st.slider(label='Pressure (Millibars)', min_value=1000.00, max_value=1040.00)
 
-with col8:
-    st.session_state.data[0, 7] = st.slider(label="Max. Inst. Wind Speed ", min_value=1.80, max_value=21.50)
+@st.cache_data
+def predict():
+    value = model.predict(st.session_state.app_data)[0]
+    result: str = ""
 
-with col9:
-    msd = st.selectbox(label="Max. Inst. Wind Speed Direction", options=directions.keys())
-    st.session_state.data[0, 8] = directions[msd]
+    for key in status.keys():
+        if status[key] == value:
+            result = key
 
-with col10:
-    st.session_state.data[0, 9] = st.slider(label="Min. Atmospheric Pressure", min_value=999.00, max_value=1022.00)
+    st.subheader(body=result)
 
-main = pd.read_csv("weather_test.csv")
-df = pd.DataFrame(data=st.session_state.data, columns=main.columns[2:])
-
-def save():
-    df.to_csv("user-data.csv")
-
-st.button(label="Save", on_click=save)
+st.button(label="See Status", on_click=predict)
