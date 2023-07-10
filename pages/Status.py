@@ -55,8 +55,7 @@ def predict():
         if status[key] == value:
             result = key
 
-    with st.expander("Weather"):
-        st.progress(value=100)
-        st.subheader(body=result)
+    st.progress(value=100)
+    st.subheader(body=result)
 
 st.button(label="See Status", on_click=predict)
