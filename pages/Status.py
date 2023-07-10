@@ -6,7 +6,6 @@ import pickle
 model = pickle.load(open("Model.h5", 'rb'))
 
 st.title("Weather Forecasting System")
-st.subheader("It predicts the next day weather based upon current day data.")
 
 if 'app_data' not in st.session_state:
     st.session_state.app_data = np.zeros(shape=(1, 7))
@@ -56,6 +55,8 @@ def predict():
         if status[key] == value:
             result = key
 
-    st.subheader(body=result)
+    with st.expander("Weather"):
+        st.progress(value=100)
+        st.subheader(body=result)
 
 st.button(label="See Status", on_click=predict)
