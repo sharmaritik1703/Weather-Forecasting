@@ -5,7 +5,7 @@ st.title("Weather Forecasting")
 st.markdown("""
 A machine learning algorithm to predict the weather status using entered parameters.
 
-`Precipation Type --- Rain or Snow
+`Precipation Type` --- Rain or Snow
 
 `Temperature (C)` --- Tempearture in Celcius
 
