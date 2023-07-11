@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import keras
+import pickle
 
-model = keras.models.load_model("Model.h5")
+model = pickle.load(open("Model.h5", 'rb'))
 
 st.title("Weather Forecasting System")
 
@@ -48,11 +48,11 @@ st.session_state.app_data[0, 6] = st.slider(label='Pressure (Millibars)', min_va
 
 @st.cache_data
 def predict():
-    value = model.predict(st.session_state.app_data)
+    value = model.predict(st.session_state.app_data)[0]
     result: str = ""
 
     for key in status.keys():
-        if status[key] == np.argmax(value):
+        if status[key] == value:
             result = key
 
     st.progress(value=100)
