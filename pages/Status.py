@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle
+import keras
 
-model = pickle.load(open("Model.h5", 'rb'))
+model = keras.models.load_model("Model.h5")
 
 st.title("Weather Forecasting System")
 
