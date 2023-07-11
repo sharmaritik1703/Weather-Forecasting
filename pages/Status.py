@@ -48,11 +48,11 @@ st.session_state.app_data[0, 6] = st.slider(label='Pressure (Millibars)', min_va
 
 @st.cache_data
 def predict():
-    value = model.predict(st.session_state.app_data)[0]
+    value = model.predict(st.session_state.app_data)
     result: str = ""
 
     for key in status.keys():
-        if status[key] == value:
+        if status[key] == np.argmax(value):
             result = key
 
     st.progress(value=100)
