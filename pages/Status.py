@@ -10,7 +10,7 @@ st.title("Weather Forecasting System")
 if 'app_data' not in st.session_state:
     st.session_state.app_data = np.zeros(shape=(1, 7))
 
-{'Overcast': 0,
+status = {'Overcast': 0,
  'Mostly Cloudy': 1,
  'Partly Cloudy': 2,
  'Clear': 3,
