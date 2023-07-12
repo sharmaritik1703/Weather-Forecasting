@@ -16,9 +16,7 @@ status = {
  'Dry and Partly Cloudy': 8, 'Windy and Partly Cloudy': 9, 'Light Rain': 10,
  'Breezy': 11, 'Windy and Overcast': 12, 'Humid and Mostly Cloudy': 13, 'Drizzle': 14,
  'Breezy and Foggy': 15, 'Windy and Mostly Cloudy': 16, 'Dry': 17, 'Humid and Partly Cloudy': 18,
- 'Dry and Mostly Cloudy': 19, 'Rain': 20, 'Windy': 21, 'Humid and Overcast': 22, 'Windy and Foggy': 23,
- 'Windy and Dry': 24, 'Dangerously Windy and Partly Cloudy': 25,'Breezy and Dry': 26
-}
+ 'Dry and Mostly Cloudy': 19, 'Rain': 20, 'Windy': 21}
 
 precipitation = {'rain': 0, 'snow': 1}
 
