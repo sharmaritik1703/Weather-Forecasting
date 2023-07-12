@@ -10,13 +10,28 @@ st.title("Weather Forecasting System")
 if 'app_data' not in st.session_state:
     st.session_state.app_data = np.zeros(shape=(1, 7))
 
-status = {
- 'Partly Cloudy': 0,'Mostly Cloudy': 1,'Overcast': 2, 'Clear': 3,'Foggy': 4,
- 'Breezy and Overcast': 5, 'Breezy and Mostly Cloudy': 6, 'Breezy and Partly Cloudy': 7,
- 'Dry and Partly Cloudy': 8, 'Windy and Partly Cloudy': 9, 'Light Rain': 10,
- 'Breezy': 11, 'Windy and Overcast': 12, 'Humid and Mostly Cloudy': 13, 'Drizzle': 14,
- 'Breezy and Foggy': 15, 'Windy and Mostly Cloudy': 16, 'Dry': 17, 'Humid and Partly Cloudy': 18,
- 'Dry and Mostly Cloudy': 19, 'Rain': 20, 'Windy': 21}
+{'Overcast': 0,
+ 'Mostly Cloudy': 1,
+ 'Partly Cloudy': 2,
+ 'Clear': 3,
+ 'Foggy': 4,
+ 'Breezy and Overcast': 5,
+ 'Breezy and Mostly Cloudy': 6,
+ 'Breezy and Partly Cloudy': 7,
+ 'Dry and Partly Cloudy': 8,
+ 'Windy and Partly Cloudy': 9,
+ 'Light Rain': 10,
+ 'Breezy': 11,
+ 'Windy and Overcast': 12,
+ 'Humid and Mostly Cloudy': 13,
+ 'Drizzle': 14,
+ 'Breezy and Foggy': 15,
+ 'Windy and Mostly Cloudy': 16,
+ 'Dry': 17,
+ 'Humid and Partly Cloudy': 18,
+ 'Dry and Mostly Cloudy': 19,
+ 'Rain': 20,
+ 'Windy': 21}
 
 precipitation = {'rain': 0, 'snow': 1}
 
