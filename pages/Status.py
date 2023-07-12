@@ -59,9 +59,12 @@ with col6:
 
 st.session_state.app_data[0, 6] = st.slider(label='Pressure (Millibars)', min_value=1000.00, max_value=1040.00)
 
+cols = ['Precip Type', 'Temperature (C)', 'Humidity', 'Wind Speed (km/h)', 'Wind Bearing (degrees)', 'Visibility (km)', 'Pressure (millibars)']
+df = pd.DataFrame(data=st.session_state.app_data, columns=cols)
+
 @st.cache_data
 def predict():
-    value = model.predict(st.session_state.app_data)[0]
+    value = model.predict(df)[0]
     result: str = ""
 
     for key in status.keys():
